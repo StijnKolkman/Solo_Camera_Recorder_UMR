@@ -26,18 +26,8 @@ Follow these steps in your VS Code integrated terminal (or any command prompt):
    ```
 
 3. **Activate the virtual environment**
-
-   - **Windows (PowerShell)**
      ```powershell
-     .\venv\Scripts\Activate.ps1
-     ```
-   - **Windows (cmd.exe)**
-     ```bat
-     .\venv\Scripts\activate.bat
-     ```
-   - **macOS / Linux**
-     ```bash
-     source venv/bin/activate
+     .\venv\Scripts\Activate
      ```
 
 4. **Install dependencies**
@@ -56,20 +46,11 @@ Follow these steps in your VS Code integrated terminal (or any command prompt):
 
 2. **Start the motor**
 
-   In the Python console (or by adding this call in `main.py`), invoke:
+   In the Python console, invoke:
    ```python
    MotorVelocityInput(10, True, True)
    ```
    - `10` – speed value
    - `True` – clockwise rotation
    - `True` – run immediately
-
-## Troubleshooting
-
-- If you see an “invalid command name” error when closing the app, ensure the Tkinter `after()` callback is canceled before destroying the window.
-- Adjust `camera_index` in `main.py` if your webcam has a different ID (default is `0`).
-
----
-
-Happy tracking!
 

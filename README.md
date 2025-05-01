@@ -9,7 +9,7 @@ This repository provides a simplified, single-camera tracking and recording appl
 - **OpenCV**, **NumPy**, **Pillow**, **Tkinter** (usually bundled)
 
 ## Getting Started
-NOTE: make sure that you put in windows your system --> display --> scale setting at 100%. Otherwise the shown camera frame doesn't fit
+NOTE: make sure that you put in windows your 'system --> display --> scale' setting is 100%. Otherwise the shown camera frame doesn't fit
 Follow these steps in your VS Code integrated terminal (or any command prompt):
 
 1. **Clone the repository**

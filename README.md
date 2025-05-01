@@ -46,9 +46,9 @@ Follow these steps in your VS Code integrated terminal (or any command prompt):
 
 2. **Start the motor**
 
-   In the Python console, invoke:
+   In a new Python Terminal start the venv again and, invoke:
    ```python
-   MotorVelocityInput(10, True, True)
+   python MotorVelocityInput.py
    ```
    - `10` – speed value
    - `True` – clockwise rotation

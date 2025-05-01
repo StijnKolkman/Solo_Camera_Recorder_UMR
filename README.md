@@ -15,8 +15,8 @@ Follow these steps in your VS Code integrated terminal (or any command prompt):
 1. **Clone the repository**
    
    ```bash
-   git clone https://github.com/<your-username>/<your-repo>.git
-   cd <your-repo>
+   git clone https://github.com/StijnKolkman/Solo_Camera_Recorder_UMR.git
+   cd Solo_Camera_Recorder_UMR
    ```
 
 2. **Create a virtual environment**

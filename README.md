@@ -4,7 +4,7 @@ This repository provides a simplified, single-camera tracking and recording appl
 
 ## Prerequisites
 
-- **Python 3.7+**
+- **Python 3.7 until 3.12 (Python 3.13 has been tested, but doesn't work)**
 - **Virtual environment** module (included with Python)
 - **OpenCV**, **NumPy**, **Pillow**, **Tkinter** (usually bundled)
 

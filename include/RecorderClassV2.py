@@ -41,13 +41,13 @@ class DualCameraApp:
         self.window.title("Dual Camera Recorder")
         self.recording = False
         self.recorded_file_names = None 
-        self.frames_cam1 = []
+        self.N_frames_cam1 = 0
         self.record_start_time = None
         # keep a handle for the after() call
         self._after_id = None
 
         # Define the size of the GUI
-        self.window.geometry("1250x700")
+        self.window.geometry("1920x1080")
 
         # Here the camera's are defined. Camera's can have different numbers on different computers, so change the number if needed (default is cap1 = 1, cap2 = 0)
         self.cap1 = cv2.VideoCapture(0, cap_api)
@@ -136,7 +136,7 @@ class DualCameraApp:
 
         if self.recording:
             # Create video writer
-            self.frames_cam1 = []
+            self.N_frames_cam1 = 0
             self.record_start_time = time.time()
             self.record_button.config(text="Stop recording", bg="gray")
             self.recorded_files_label.config(text="Recording in progress...")
@@ -147,7 +147,7 @@ class DualCameraApp:
         else:
             # Stop recording and calculate FPS
             duration = time.time() - self.record_start_time
-            fps_value = len(self.frames_cam1) / duration if duration > 0 else 30.0
+            fps_value = self.N_frames_cam1 / duration if duration > 0 else 30.0
             print(f"Duration: {duration:.2f}s — FPS: {fps_value:.2f}")
 
             # Adjust the FPS value of the video writers after recording
@@ -167,6 +167,7 @@ class DualCameraApp:
                 writer.writerow(["Frame", "Timestamp (s)"])
                 for i, ts in enumerate(self.timestamps):
                     writer.writerow([i, ts])
+            self.timestamps = []  # Clear timestamps after saving
 
             print(f"[INFO] Timestamps saved to {timestamp_filename}")
 
@@ -184,7 +185,7 @@ class DualCameraApp:
 
         if self.recording and ret1:
             # Save frames
-            self.frames_cam1.append(frame1.copy())
+            self.N_frames_cam1 += 1
             self.out1.write(frame1)
 
             # Only log timestamp if both frames were successfully saved
@@ -197,7 +198,7 @@ class DualCameraApp:
 
         if ret1:
             # Update the GUI with the frame --> first the frame is resized to fit in the GUI 
-            frame1_resized = cv2.resize(frame1, (576, 324), interpolation=cv2.INTER_LINEAR)
+            frame1_resized = cv2.resize(frame1, (1344, 756), interpolation=cv2.INTER_LINEAR)
             frame_rgb1 = cv2.cvtColor(frame1_resized, cv2.COLOR_BGR2RGB)
             img1 = ImageTk.PhotoImage(Image.fromarray(frame_rgb1))
             self.video_label1.imgtk = img1
